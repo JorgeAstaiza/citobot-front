@@ -30,6 +30,36 @@ export const navItems: INavData[] = [
     title: true
   },
   {
+    name: 'Pacientes',
+    url: '/pacientes',
+    iconComponent: { name: 'cil-group'},
+    children: [
+      {
+        name: 'Consultar',
+        url: '/pacientes/consultar'
+      },
+      {
+        name: 'Crear',
+        url: '/pacientes/crear'
+      }
+    ]
+  },
+  {
+    name: 'Tamizaje',
+    url: '/tamizaje',
+    iconComponent: { name: 'cil-beaker'},
+    children: [
+      {
+        name: 'Consultar',
+        url: '/tamizaje/consultar'
+      },
+      {
+        name: 'Crear',
+        url: '/tamizaje/crear'
+      }
+    ]
+  },
+  {
     name: 'Base',
     url: '/base',
     iconComponent: { name: 'cil-puzzle' },

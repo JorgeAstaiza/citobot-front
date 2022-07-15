@@ -9,17 +9,22 @@ import {
 import { Router } from '@angular/router';
 
 import { User } from '../../models/user.model';
+import { HttpClient } from '@angular/common/http';
+import { url } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any; 
+  enviromentUrl = url;
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private http: HttpClient
   ) {
 
     /* Saving user data in localstorage when 
@@ -70,12 +75,15 @@ export class AuthService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: any) {
+    console.log(user);
+    
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
     const userData: User = {
-      uid: user.uid,
-      email: user.email
+      uid: user.id,
+      email: user.email,
+      role: user.role
     };
     return userRef.set(userData, {
       merge: true,
@@ -87,5 +95,9 @@ export class AuthService {
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     });
+  }
+
+  registerUser(form: User):Observable<any> {
+    return this.http.post<any>(`${this.enviromentUrl}/usuarios/crear`, form);
   }
 }

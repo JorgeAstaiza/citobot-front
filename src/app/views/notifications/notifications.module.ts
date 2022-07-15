@@ -58,7 +58,7 @@ import { AppToastComponent } from './toasters/toast-simple/toast.component';
     PopoverModule,
     ProgressModule,
     IconModule
-  ],
+  ]
 })
 export class NotificationsModule {
 }

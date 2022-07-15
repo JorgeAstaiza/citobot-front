@@ -10,4 +10,8 @@ export class LoginComponent {
 
   constructor(public authService: AuthService) { }
 
+  public loginUser() {
+    // this.authService.SignIn()
+  }
+
 }

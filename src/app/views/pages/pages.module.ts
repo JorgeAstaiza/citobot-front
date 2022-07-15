@@ -9,7 +9,9 @@ import { Page500Component } from './page500/page500.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { NotificationsModule } from '../notifications/notifications.module';
+import { ToastModule } from '@coreui/angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     GridModule,
     IconModule,
     FormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotificationsModule,
+    ToastModule,
+    HttpClientModule
   ]
 })
 export class PagesModule {
